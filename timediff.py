@@ -14,6 +14,9 @@ import datetime
 import re
 
 
+__version__ = 0
+
+
 class TimePairAction(argparse.Action):
 	TimePair = namedtuple('TimePair', ['start', 'end'])
 	Time = namedtuple('Time', ['hour', 'minute'])
@@ -55,6 +58,7 @@ class TimePairAction(argparse.Action):
 
 def getargs():
 	parser = argparse.ArgumentParser(description=__doc__)
+	parser.add_argument('-V', '--version', action='version', version='{} {}'.format(__file__, __version__))
 	parser.add_argument('time_pairs', metavar='begin_time end_time', nargs='+', action=TimePairAction, help='Format must be HHMM.')
 
 	return parser.parse_args()

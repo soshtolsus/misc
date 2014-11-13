@@ -1,0 +1,17 @@
+#!/bin/bash
+
+pushd $(dirname "$0");
+
+VERSION=$(git describe)
+REPLACE_PATTERN='\(__version__ \?= \?\).*$';
+SED_COMMAND="s/$REPLACE_PATTERN/\1'$VERSION'/";
+
+echo "using '$SED_COMMAND' sed command";
+
+for i in *.py;
+do
+	echo "inserting version into $i";
+	sed -i "$SED_COMMAND" "$i";
+done;
+
+popd;

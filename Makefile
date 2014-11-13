@@ -1,0 +1,2 @@
+all:
+	./insert_version

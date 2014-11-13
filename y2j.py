@@ -12,8 +12,13 @@ import json
 import sys
 import pdb
 
+
+__version__ = 0;
+
+
 def getargs():
 	parser = argparse.ArgumentParser(description=__doc__)
+	parser.add_argument('-V', '--version', action='version', version='{} {}'.format(__file__, __version__))
 	parser.add_argument('--compact', action='store_true', help='output the most compact JSON possible')
 	parser.add_argument('--with-tabs', action='store_true', help='presume YAML has been output with tabs')
 	parser.add_argument('from_file', metavar='from-file', nargs='?', default=None, help='file to load - defaults to stdin')
